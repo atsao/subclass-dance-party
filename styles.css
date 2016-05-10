@@ -26,11 +26,37 @@ body, a:link, a:visited, a:active{
 }
 
 .blinky-dancer {
-  background: #fff;
+  background: transparent;
   border: dashed 10px #FF8300;
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: reverse;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: 0;
+  z-index: 5;
+}
+
+.blinky-dancer::after {
+  -webkit-animation-name: radar;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: 0;
+  content:'';
+  display: block;
+  background: #FF8300;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+
 }
 
 
@@ -110,4 +136,21 @@ body, a:link, a:visited, a:active{
   100% {
     transform: scale(0.4);
   }
+}
+
+@-webkit-keyframes radar {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(8);
+    opacity: 0;
+  }
+
 }
