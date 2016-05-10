@@ -33,7 +33,7 @@ $(document).ready(function(){
 
   $('#line-up').on("click", function(e) {
     e.preventDefault();
-    console.log('line up');
+
     window.dancers.forEach(function(dancer) {
       dancer.lineUp();
     })

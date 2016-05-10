@@ -3,6 +3,7 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.top = top;
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
+  this.callCount = 0;
 
   this.step(timeBetweenSteps);
   this.setPosition(top, left);
@@ -10,11 +11,11 @@ var Dancer = function(top, left, timeBetweenSteps) {
 
 Dancer.prototype.step = function(timeBetweenSteps) {
   var context = this;
-  context.callCount = 0;
+
 
   // setTimeout(function() {
   //   this.step(timeBetweenSteps);
-  //   // context.callCount++;
+  //   console.log('Dancer callCount:', this.callCount);
   // }.bind(context), timeBetweenSteps);
   setTimeout(this.step.bind(this, timeBetweenSteps), timeBetweenSteps);
 }

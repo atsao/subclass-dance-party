@@ -1,6 +1,8 @@
 
 var BlinkyDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
+  this.$node.addClass('blinky-dancer');
+  this.callCount = 0;
 }
 
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
@@ -8,11 +10,14 @@ BlinkyDancer.prototype.constructor = BlinkyDancer;
 
 BlinkyDancer.prototype.step = function(timeBetweenSteps) {
   this.$node.toggle();
+  this.$node.css({
+    opacity: Math.random()
+  })
   Dancer.prototype.step.call(this, timeBetweenSteps);
 }
 
 BlinkyDancer.prototype.lineUp = function() {
-  var newLeft = this.$node.css('left').replace(/[^-\d\.]/g, '');
+  var newLeft = this.$node.css('left').replace(/[^-\d\.]/g, ''); // use parseFloat?
   this.$node.css({
     top: '50px',
     left: newLeft + 10 + 'px'
