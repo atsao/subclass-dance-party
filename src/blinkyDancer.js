@@ -11,6 +11,14 @@ BlinkyDancer.prototype.step = function(timeBetweenSteps) {
   Dancer.prototype.step.call(this, timeBetweenSteps);
 }
 
+BlinkyDancer.prototype.lineUp = function() {
+  var newLeft = this.$node.css('left').replace(/[^-\d\.]/g, '');
+  this.$node.css({
+    top: '50px',
+    left: newLeft + 10 + 'px'
+  })
+}
+
 var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
   var newBlinkyDancer = new BlinkyDancer(top, left, timeBetweenSteps);
 
