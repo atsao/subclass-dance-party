@@ -8,10 +8,10 @@ BlinkyDancer.prototype = Object.create(Dancer.prototype);
 BlinkyDancer.prototype.constructor = BlinkyDancer;
 
 BlinkyDancer.prototype.step = function(timeBetweenSteps) {
-  this.$node.fadeToggle();
-  this.$node.css({
-    opacity: Math.random()
-  })
+  this.$node.fadeToggle(1000);
+  // this.$node.css({
+  //   opacity: Math.random()
+  // });
   Dancer.prototype.step.call(this, timeBetweenSteps);
 }
 

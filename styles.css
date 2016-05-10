@@ -42,7 +42,10 @@ body, a:link, a:visited, a:active{
 
 
 .dancer{
+  cursor: pointer;
+  display: block;
   position:absolute;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 
@@ -51,27 +54,24 @@ body, a:link, a:visited, a:active{
 .blinky-dancer {
   background: transparent;
   border: double 10px #27AE60;
-  border-radius: 50%;
+  /*border-radius: 50%;*/
   height: 50px;
   width: 50px;
   z-index: 5;
 }
 
-.blinky-dancer::after {
-  -webkit-animation-name: radar;
-  -webkit-animation-duration: 2s;
+.blinky-dancer:hover {
+  border-style: dotted;
+    -webkit-animation-name: spin;
+  -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: normal;
   -webkit-animation-timing-function: linear;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-delay: 0;
-  content:'';
-  display: block;
-  background: rgba(46, 204, 113, 0.7);
-  border-radius: 50%;
-  height: 100%;
-  width: 100%;
-  z-index: 4;
+}
+
+.blinky-dancer:hover::after {
 
 }
 
@@ -100,7 +100,22 @@ body, a:link, a:visited, a:active{
 .spinning-dancer:hover {
   border-style: double;
   border-radius: 50%;
-  -webkit-transition: all 0.3s ease-out;
+}
+
+.spinning-dancer:hover::after {
+  -webkit-animation-name: radar;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: 0;
+  content:'';
+  display: block;
+  background: #E6192C;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
 }
 
 
@@ -114,47 +129,46 @@ body, a:link, a:visited, a:active{
   -webkit-animation-delay: 0;
   background: #2980BB;
   border: 0; 
-  border-radius: 10px;
+  border-radius: 50%;
+  padding: 20px;
   height: 50px;
   width: 20px;
 }
 
-.radar-dancer {
-  background: #27AE60;
-  height: 50px;
-  width: 50px;
+.stick-dancer:hover {
+  background: #94BFDD;
+  -webkit-animation-play-state: paused;
 }
-
 
 
 
 @keyframes spin {
   0% {
-    transform: rotate(360deg);
+    transform: rotate(0);
   }
 
   100% {
-    transform: rotate(0);
+    transform: rotate(360deg);
   }
 }
 
 @-webkit-keyframes spin {
   0% {
-    transform: rotate(360deg);
+    transform: rotate(0);
   }
 
   100% {
-    transform: rotate(0);
+    transform: rotate(360deg);
   }
 }
 
 @-webkit-keyframes sideStep {
   0% {
-    transform: translateX(-50px) rotate(30deg);
+    transform: translateX(-20px) rotate(30deg);
   }
   
   100% {
-    transform: translateX(50px) rotate(-30deg);
+    transform: translateX(20px) rotate(-30deg);
   }
 }
 
