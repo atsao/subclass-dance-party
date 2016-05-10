@@ -16,10 +16,10 @@ BlinkyDancer.prototype.step = function(timeBetweenSteps) {
 }
 
 BlinkyDancer.prototype.lineUp = function() {
-  var newLeft = this.$node.css('left').replace(/[^-\d\.]/g, ''); // use parseFloat?
+  // var newLeft = this.$node.css('left').replace(/[^-\d\.]/g, ''); // use parseFloat?
   this.$node.css({
-    top: '50px',
-    left: newLeft + 10 + 'px'
+    top: '50px'//,
+    // left: newLeft + 10 + 'px'
   })
 }
 

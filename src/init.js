@@ -38,5 +38,13 @@ $(document).ready(function(){
       dancer.lineUp();
     })
   });
+
+  $('#party-time').on('click', function(e) {
+    e.preventDefault();
+
+    window.dancers.forEach(function(dancer) {
+      dancer.partyTime();
+    })
+  })
 });
 
