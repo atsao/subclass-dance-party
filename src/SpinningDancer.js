@@ -8,7 +8,6 @@ SpinningDancer.prototype = Object.create(Dancer.prototype);
 SpinningDancer.prototype.constructor = SpinningDancer;
 
 SpinningDancer.prototype.step = function() {
-  //this.$node.toggle();
   var topPos = $("body").height() * Math.random() * 0.5;
   var leftPos = $("body").width() * Math.random() * 0.5;
 

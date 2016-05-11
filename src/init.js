@@ -29,7 +29,9 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+
     $('body').append(dancer.$node);
+
     window.dancers.push(dancer);
   });
 
@@ -82,6 +84,7 @@ $(document).ready(function(){
   function generateDancers() {
     var dancerFactories = document.getElementsByClassName('dancer-button');
     var dancerFactoriesFunctions = [];
+    
     for (var i = 0; i < dancerFactories.length; i++) {
       dancerFactoriesFunctions.push(dancerFactories[i].getAttribute('data-dancer-maker-function-name'));
     }
@@ -90,12 +93,14 @@ $(document).ready(function(){
       var random = Math.floor(Math.random() * dancerFactoriesFunctions.length);
       var randomFunc = window[dancerFactoriesFunctions[random]];
       var dancer = new randomFunc(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 1000
-    );
-    $('body').append(dancer.$node);
-    window.dancers.push(dancer);
+        $("body").height() * Math.random(),
+        $("body").width() * Math.random(),
+        Math.random() * 1000
+      );
+
+      $('body').append(dancer.$node);
+
+      window.dancers.push(dancer);
     }
   }
 
