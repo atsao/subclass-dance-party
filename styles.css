@@ -130,7 +130,7 @@ a:hover {
 
 .spinning-dancer::after {
   -webkit-animation-name: radar;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: normal;
   -webkit-animation-timing-function: ease-out;
