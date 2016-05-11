@@ -34,6 +34,8 @@ Dancer.prototype.move = function() {
 }
 
 Dancer.prototype.partyTime = function() {
+  // This would be a function to have dancers interact with each other if in close proximity
+  
   // var $currentDancer = this.$node;
   // console.log('CURRENT DANCER:', $currentDancer);
   // var currentDancerX = $currentDancer.offset().left;

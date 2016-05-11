@@ -46,7 +46,6 @@ a:hover {
 
 .title, .button {
   padding: 5px 10px;
-  /*float:right;*/
 }
 
 
@@ -173,7 +172,6 @@ a:hover {
   background: #eee;
   border: 0; 
   border-radius: 20px;
-  /*padding: 10px;*/
   height: 100px;
   width: 40px;
 }

@@ -10,9 +10,6 @@ describe("stickDancer", function() {
   });
 
   it("should have a line up function that makes its node align to one side", function() {
-    // sinon.spy(blinkyDancer.$node, 'fadeToggle');
-    // blinkyDancer.step();
-    // expect(blinkyDancer.$node.fadeToggle.called).to.be.true;
     expect(stickDancer.lineUp).to.be.function;
   });
 });
