@@ -5,19 +5,24 @@ body, html{
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   margin: 0px;
-  background-color:#fff;
+  background-color: #fff;
   font-size: 16px;
   overflow: hidden;
+  -webkit-transition: all 0.25s ease-out;
 }
 
-body, a:link, a:visited, a:active{
-  color: #adc3bb;
+body, a:link, a:visited, a:active {
+  color: #ddd;
 }
 
 .topbar{
   height: auto;
   background-color: #555;
   padding: 10px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 9999;
 }
 
 .topbar::after {
@@ -28,6 +33,10 @@ body, a:link, a:visited, a:active{
   padding: 0;
 }
 
+a:hover {
+  color: #efefef;
+}
+
 
 
 .title{
@@ -35,9 +44,9 @@ body, a:link, a:visited, a:active{
 }
 
 
-.title, .addDancerButton{
+.title, .button {
   padding: 5px 10px;
-  float:right;
+  /*float:right;*/
 }
 
 
@@ -53,16 +62,16 @@ body, a:link, a:visited, a:active{
 
 .blinky-dancer {
   background: transparent;
-  border: double 10px #27AE60;
-  /*border-radius: 50%;*/
-  height: 50px;
-  width: 50px;
+  border: double 10px #fff; 
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
   z-index: 5;
 }
 
 .blinky-dancer:hover {
   border-style: dotted;
-    -webkit-animation-name: spin;
+  -webkit-animation-name: spin;
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: normal;
@@ -71,10 +80,32 @@ body, a:link, a:visited, a:active{
   -webkit-animation-delay: 0;
 }
 
-.blinky-dancer:hover::after {
+/*.blinky-dancer::after {
+    -webkit-animation-name: radar;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: 0;
+    content:'';
+  display: block;
+  background: #fff;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}*/
 
+.blinky {
+  background: url('img/Blinkyold.jpg') top left no-repeat;
+  border: none;
+  border-radius: 0;
 }
 
+.blinky:hover {
+  -webkit-animation: none;
+  border: none;
+}
 
 .spinning-dancer {
   animation-name: spin;
@@ -91,20 +122,15 @@ body, a:link, a:visited, a:active{
   -webkit-animation-timing-function: linear;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-delay: 0;
-  border: dotted 10px #E6192C; 
+  border: dotted 10px #27AE60; 
   border-radius: 50%;
-  height: 25px;
-  width: 25px;
+  height: 100px;
+  width: 100px;
 }
 
-.spinning-dancer:hover {
-  border-style: double;
-  border-radius: 50%;
-}
-
-.spinning-dancer:hover::after {
+.spinning-dancer::after {
   -webkit-animation-name: radar;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 0.5s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: normal;
   -webkit-animation-timing-function: ease-out;
@@ -112,7 +138,24 @@ body, a:link, a:visited, a:active{
   -webkit-animation-delay: 0;
   content:'';
   display: block;
-  background: #E6192C;
+  background: rgba(255, 255, 255, 0.4);
+  border-style: double;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.spinning-dancer:hover::after {
+  -webkit-animation-name: radar;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: 0;
+  content:'';
+  display: block;
+  background: #fff;
   border-radius: 50%;
   height: 100%;
   width: 100%;
@@ -127,19 +170,18 @@ body, a:link, a:visited, a:active{
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-delay: 0;
-  background: #2980BB;
+  background: #eee;
   border: 0; 
-  border-radius: 50%;
-  padding: 20px;
-  height: 50px;
-  width: 20px;
+  border-radius: 20px;
+  /*padding: 10px;*/
+  height: 100px;
+  width: 40px;
 }
 
 .stick-dancer:hover {
-  background: #94BFDD;
+  background: #efefef;
   -webkit-animation-play-state: paused;
 }
-
 
 
 @keyframes spin {

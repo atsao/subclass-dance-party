@@ -1,7 +1,21 @@
 $(document).ready(function(){
   window.dancers = [];
 
-  $(".addDancerButton").on("click", function(event){
+function getRandomColor () {
+  var hex = Math.floor(Math.random() * 0xFFFFFF);
+  return "#" + ("000000" + hex.toString(16)).substr(-6);
+}
+  setInterval(function() {
+    $('body').css('background', getRandomColor);
+    $('.spinning-dancer, .blinky-dancer').css({
+      'border-color': getRandomColor
+    });
+    $('.stick-dancer').css({
+      'background-color': getRandomColor
+    });
+  }, 1000);
+
+  $(".dancer-button").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -22,7 +36,7 @@ $(document).ready(function(){
 
     // make a dancer with a random position
 
-    var dancer = dancerMakerFunction(
+    var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
@@ -36,7 +50,20 @@ $(document).ready(function(){
 
     window.dancers.forEach(function(dancer) {
       dancer.lineUp();
-    })
+    });
+  });
+
+  $('#scatter').on("click", function(e) {
+    e.preventDefault();
+
+    window.dancers.forEach(function(dancer) {
+      var scatter = setInterval(function() {
+        dancer.move();
+      }, 1000);
+      setTimeout(function() {
+        clearInterval(scatter);
+      }, 5000);
+    });
   });
 
   $('#party-time').on('click', function(e) {
@@ -44,6 +71,39 @@ $(document).ready(function(){
 
     window.dancers.forEach(function(dancer) {
       dancer.partyTime();
+    })
+  });
+
+  $('#bash').on('click', function(e) {
+    e.preventDefault();
+
+    var dancerFactories = document.getElementsByClassName('dancer-button');
+    var dancerFactoriesFunctions = [];
+    for (var i = 0; i < dancerFactories.length; i++) {
+      dancerFactoriesFunctions.push(dancerFactories[i].getAttribute('data-dancer-maker-function-name'));
+    }
+
+    for (var i = 0; i < 25; i++) {
+      var random = Math.floor(Math.random() * dancerFactoriesFunctions.length);
+      var randomFunc = window[dancerFactoriesFunctions[random]];
+      var dancer = new randomFunc(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+    }
+  });
+
+  $('#blinky').on('click', function(e) {
+    e.preventDefault();
+
+    window.dancers.forEach(function(dancer) {
+      var $dancer = dancer.$node;
+      if ($dancer.hasClass('blinky-dancer')) {
+        $dancer.addClass('blinky');
+      }
     })
   })
 });

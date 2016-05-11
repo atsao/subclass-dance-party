@@ -7,24 +7,19 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
 BlinkyDancer.prototype.constructor = BlinkyDancer;
 
-BlinkyDancer.prototype.step = function(timeBetweenSteps) {
-  this.$node.fadeToggle(1000);
+BlinkyDancer.prototype.step = function() {
+  this.$node.fadeToggle(500);
   // this.$node.css({
   //   opacity: Math.random()
   // });
-  Dancer.prototype.step.call(this, timeBetweenSteps);
+  Dancer.prototype.step.call(this);
 }
 
 BlinkyDancer.prototype.lineUp = function() {
-  // var newLeft = this.$node.css('left').replace(/[^-\d\.]/g, ''); // use parseFloat?
   this.$node.css({
-    top: '50px'//,
-    // left: newLeft + 10 + 'px'
+    top: '50px'
   })
 }
 
-var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
-  var newBlinkyDancer = new BlinkyDancer(top, left, timeBetweenSteps);
 
-  return newBlinkyDancer;
-}
+

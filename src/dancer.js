@@ -2,16 +2,16 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span>').addClass('dancer');
   this.top = top;
   this.left = left;
-  this.timeBetweenSteps = timeBetweenSteps;
+  this._timeBetweenSteps = timeBetweenSteps;
 
-  this.step(timeBetweenSteps);
+  this.step();
   this.setPosition(top, left);
 };
 
 Dancer.prototype.step = function(timeBetweenSteps) {
   setTimeout(function() {
     this.step(timeBetweenSteps);
-  }.bind(this), timeBetweenSteps);
+  }.bind(this), this._timeBetweenSteps);
 }
 
 Dancer.prototype.setPosition = function(top, left) {
@@ -23,25 +23,38 @@ Dancer.prototype.setPosition = function(top, left) {
   this.$node.css(styles);
 }
 
+Dancer.prototype.move = function() {
+  var topPos = $("body").height() * Math.random();
+  var leftPos = $("body").width() * Math.random();
+
+  this.$node.css({
+    top: topPos,
+    left: leftPos
+  });
+}
+
 Dancer.prototype.partyTime = function() {
-  var $currentDancer = this.$node;
-  console.log('CURRENT DANCER:', $currentDancer);
-  var currentDancerX = $currentDancer.offset().left;
-  var currentDancerY = $currentDancer.offset().top;
-  var otherDancers = window.dancers.slice();
-  otherDancers.splice(otherDancers.indexOf($currentDancer), 1);
-  console.log('Original dancers:',window.dancers);
-  // window.dancers.splice(window.dancers.indexOf($currentDancer), 1);
-  console.log('other dancers', otherDancers);
+  // var $currentDancer = this.$node;
+  // console.log('CURRENT DANCER:', $currentDancer);
+  // var currentDancerX = $currentDancer.offset().left;
+  // var currentDancerY = $currentDancer.offset().top;
+  // var otherDancers = window.dancers.slice();
+  // otherDancers.splice(otherDancers.indexOf($currentDancer), 1);
+  // console.log('Original dancers:',window.dancers);
+  // // window.dancers.splice(window.dancers.indexOf($currentDancer), 1);
+  // console.log('other dancers', otherDancers);
 
-  var nextDancer = otherDancers[0].$node;
-  var nextDancerX = nextDancer.offset().left;
-  var nextDancerY = nextDancer.offset().top;
+  // var nextDancer = otherDancers[0].$node;
+  // var nextDancerX = nextDancer.offset().left;
+  // var nextDancerY = nextDancer.offset().top;
 
-  var distance = Math.sqrt(Math.pow(currentDancerX - nextDancerX, 2) + Math.pow(currentDancerY - nextDancerY, 2));
-  console.log(distance);
+  // var distance = Math.sqrt(Math.pow(currentDancerX - nextDancerX, 2) + Math.pow(currentDancerY - nextDancerY, 2));
+  // console.log(distance);
 
-  nextDancer.css('background', 'red');
+  // nextDancer.css('background', 'red');
+
+
+
 
   // var offsetLeft = this.$node.offset().left;
   // var offsetTop = this.$node.offset().top;
@@ -62,4 +75,6 @@ Dancer.prototype.partyTime = function() {
 
   //   console.log('Closest dancer', closestDancer);
   // })
+
+
 }

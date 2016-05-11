@@ -4,19 +4,21 @@
     <title>Object Dance Party</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="lib/jquery.js"></script>
-    <script src="src/dancer.js"></script>
-    <script src="src/blinkyDancer.js"></script>
+    <script src="src/Dancer.js"></script>
+    <script src="src/BlinkyDancer.js"></script>
     <script src="src/SpinningDancer.js"></script>
     <script src="src/StickDancer.js"></script>
   </head>
   <body>
     <div class="topbar">
       <span class="title">object dance party</span>
-      <a href="#" id="line-up">Dancers, line up!</a>
-      <a href="#" id="party-time">Party time!</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeBlinkyDancer">add a blinky dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeSpinningDancer">add a spinning dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeStickDancer">add a stick dancer</a>
+      <a href="#" class="button dancer-button" data-dancer-maker-function-name="BlinkyDancer">add a blinky dancer</a>
+      <a href="#" class="button dancer-button" data-dancer-maker-function-name="SpinningDancer">add a spinning dancer</a>
+      <a href="#" class="button dancer-button" data-dancer-maker-function-name="StickDancer">add a stick dancer</a>
+      <a href="#" id="line-up" class="button">Dancers, line up!</a>
+      <a href="#" id="scatter" class="button">Scatter!</a>
+      <a href="#" id="blinky" class="button">Blinky</a>
+      <a href="#" id="bash" class="button">Random</a>
     </div>
     <script src="src/init.js"></script>
   </body>
